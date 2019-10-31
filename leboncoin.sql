@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 31 oct. 2019 à 16:32
+-- Généré le :  jeu. 31 oct. 2019 à 16:36
 -- Version du serveur :  10.1.25-MariaDB
 -- Version de PHP :  5.6.31
 
@@ -78,7 +78,18 @@ ALTER TABLE `personne`
 -- AUTO_INCREMENT pour la table `annonce`
 --
 ALTER TABLE `annonce`
-  MODIFY `idannonce` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `idannonce` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `annonce`
+--
+ALTER TABLE `annonce`
+  ADD CONSTRAINT `annonce_ibfk_1` FOREIGN KEY (`idannonce`) REFERENCES `personne` (`idannonce`),
+  ADD CONSTRAINT `annonce_ibfk_2` FOREIGN KEY (`personneid`) REFERENCES `personne` (`personneid`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
