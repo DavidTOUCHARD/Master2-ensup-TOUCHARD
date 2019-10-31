@@ -17,7 +17,7 @@ public class ConnexionDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/cabinet?user=root&password=");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/leboncoin?user=root&password=");
 			ConnexionDao.statement = conn.createStatement();
 
 		} catch (ClassNotFoundException e) {
