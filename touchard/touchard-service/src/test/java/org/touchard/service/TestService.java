@@ -35,12 +35,12 @@ public class TestService extends TestCase {
 	
 	@Test
 	public void testGetPersonne(){
-		Personne personne = new Personne(0, "TOUCHARD", "David", "login", "pwd", "03/06/1997", null);
+		Personne personne = new Personne(1, "TOUCHARD", "David", "login", "pwd", "03/06/1997", null);
 		//personneDao.creerPersonne(personne);
 		personneDao.getPersonne(1);
 		Personne test = Mockito.verify(personneDao, Mockito.times(1)).getPersonne(1);
 		
-		Mockito.when(personneDao.getPersonne(1)).thenReturn(test);
+		Mockito.when(personneDao.getPersonne(1)).thenReturn(personne);
 	}
 }
 

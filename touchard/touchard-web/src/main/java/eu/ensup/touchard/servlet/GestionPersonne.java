@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.touchard.domaine.Personne;
+import org.touchard.service.PersonneService;
 
 /**
  * Servlet implementation class GestionPersonne
@@ -13,7 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/GestionPersonne")
 public class GestionPersonne extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    PersonneService service = new PersonneService();
+    Personne personne = new Personne(0, "TOUCHARD", "David", null, null, null, null);
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -26,8 +31,9 @@ public class GestionPersonne extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
+		session.setAttribute("message", service.creerPersonne(personne));
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	/**
